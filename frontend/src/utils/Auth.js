@@ -52,7 +52,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  baseUrl: 'https://auth.nomoreparties.co/'
+  baseUrl: 'https://api.mesto.isachenko.nomoredomainsmonster.ru/'
 })
 
 export default auth

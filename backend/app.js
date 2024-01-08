@@ -3,6 +3,7 @@ const mongoose = require('mongoose').default;
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const router = require('./routes/index');
 const errorsHandler = require('./middlewares/errorsHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -18,6 +19,7 @@ mongoose.connect(DB_URL)
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use(requestLogger);
 app.use(router);
 app.use(errorLogger);
