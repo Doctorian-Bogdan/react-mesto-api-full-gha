@@ -32,7 +32,7 @@ function createCard(req, res, next) {
 }
 
 function deleteCard(req, res, next) {
-  return Card.findByIdAndDelete(req.params.cardId)
+  return Card.findById(req.params.cardId)
     .then((card) => {
       if (!card) {
         next(new NotFoundError('Данная карточка не найдена'));
@@ -42,7 +42,10 @@ function deleteCard(req, res, next) {
         next(new ForbiddenError('Можно удалять только свои карточки'));
         return;
       }
-      res.status(OK).send(card);
+
+      Card.deleteOne(card)
+        .then(() => res.status(200).send(card))
+        .catch(next);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
