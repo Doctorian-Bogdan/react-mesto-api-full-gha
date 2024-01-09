@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.121.168
+IP 158.160.121.168
 
 Frontend https://mesto.isachenko.nomoredomainsmonster.ru/
 
