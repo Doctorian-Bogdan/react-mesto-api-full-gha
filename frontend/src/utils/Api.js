@@ -11,10 +11,14 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  _getToken() {
+    return(localStorage.getItem('token'))
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       }
     })
@@ -24,7 +28,7 @@ class Api {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       }
     })
@@ -35,7 +39,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -50,7 +54,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -65,7 +69,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       }
     })
@@ -76,7 +80,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       }
     })
@@ -87,7 +91,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       }
     })
@@ -98,7 +102,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: `Bearer ${this._getToken()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -110,7 +114,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.mesto.isachenko.nomoredomainsmonster.ru/'
+  baseUrl: 'https://api.mesto.isachenko.nomoredomainsmonster.ru'
 });
 
 export default api

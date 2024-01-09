@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.129.156
+IP-адрес 158.160.121.168
 
-Frontend https://...
+Frontend https://mesto.isachenko.nomoredomainsmonster.ru/
 
-Backend https://...
+Backend https://api.mesto.isachenko.nomoredomainsmonster.ru/
